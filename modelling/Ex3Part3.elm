@@ -16,6 +16,17 @@ type Msg
     | TypedSecond String
 
 
+view formDetails =
+    if formDetails.firstName /= "" && formDetails.secondName /= "" then
+        text "Both fields are filled!"
+    else if formDetails.firstName /= "" then
+        text "We have just firstname"
+    else if formDetails.secondName /= "" then
+        text "We have just secondName"
+    else
+        text "We have no values yet"
+
+
 update msg model =
     case msg of
         TypedFirst newFirst ->
@@ -47,7 +58,7 @@ update msg model =
                             Both fName newSecond
 
                         JustSecond sName ->
-                            JustSecond sName
+                            JustSecond newSecond
 
                         Both fName sName ->
                             Both fName newSecond

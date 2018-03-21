@@ -10,6 +10,11 @@ type alias FormDetails =
     }
 
 
+type Msg
+    = TypedFirst String
+    | TypedSecond String
+
+
 view formDetails =
     if formDetails.firstName /= "" && formDetails.secondName /= "" then
         text "Both fields are filled!"
@@ -19,6 +24,29 @@ view formDetails =
         text "We have just secondName"
     else
         text "We have no values yet"
+
+
+update msg model =
+    case msg of
+        TypedFirst newFirst ->
+            let
+                formDetails =
+                    model.formDetails
+
+                formDetails_ =
+                    { formDetails | firstName = newFirst }
+            in
+            { model | formDetails = formDetails_ }
+
+        TypedSecond newSecond ->
+            let
+                formDetails =
+                    model.formDetails
+
+                formDetails_ =
+                    { formDetails | secondName = newSecond }
+            in
+            { model | formDetails = formDetails_ }
 
 
 submit formDetails =
