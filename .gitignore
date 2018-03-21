@@ -1,0 +1,10 @@
+.DS_Store
+
+backups
+.stack-work
+dist
+tmp
+elm-stuff
+node_modules
+
+public/app*
