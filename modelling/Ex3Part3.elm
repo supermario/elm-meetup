@@ -11,20 +11,26 @@ type FormDetails
     | Both String String
 
 
+type ValidForm =  ValidForm ...data..
+
 type Msg
     = TypedFirst String
     | TypedSecond String
 
 
 view formDetails =
-    if formDetails.firstName /= "" && formDetails.secondName /= "" then
-        text "Both fields are filled!"
-    else if formDetails.firstName /= "" then
-        text "We have just firstname"
-    else if formDetails.secondName /= "" then
-        text "We have just secondName"
-    else
-        text "We have no values yet"
+    case formDetails of
+        Both fName sName ->
+            text "Both fields are filled!"
+
+        JustFirst fName ->
+            text "We have just firstname"
+
+        JustSecond sName ->
+            text "We have just secondName"
+
+        BothEmpty ->
+            text "We have no values yet"
 
 
 update msg model =

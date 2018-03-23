@@ -6,6 +6,7 @@ import Html exposing (Html, text)
 type Mood
     = Happy
     | Sad
+    | Melancholy
 
 
 myMood =
@@ -19,6 +20,9 @@ showMood mood =
 
         Sad ->
             text "You are sad! :("
+
+        Melancholy ->
+            text "Melancholy.... whatever"
 
 
 main =
